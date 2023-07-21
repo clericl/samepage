@@ -1,20 +1,23 @@
 'use client'
 
+import { MouseEvent, useCallback } from "react";
 import classNames from "classnames";
 import useBoundStore from "@/zustand";
-import { useCallback } from "react";
+import SignUpForm from "../SignUpForm";
 
-export default function SplashModal() {
+export default function SplashModalBase() {
   const { modal, closeModal } = useBoundStore((state) => state)
 
-  const closeModalCallback = useCallback(() => {
-    closeModal()
+  const handleCloseModal = useCallback((e: MouseEvent<HTMLElement>) => {
+    if (e.target === e.currentTarget) {
+      closeModal()
+    }
   }, [closeModal])
 
   return (
     <div
       className={classNames(
-        'transition-opacity absolute w-full h-full bg-black/70 z-10 top-0 left-0',
+        'transition-opacity absolute w-full h-full bg-black/70 z-10 top-0 left-0 flex justify-center items-center',
         {
           'opacity-0': !modal,
           'opacity-100': !!modal,
@@ -22,8 +25,13 @@ export default function SplashModal() {
           'pointer-events-all': !!modal,
         },
       )}
-      onClick={closeModalCallback}
+      onClick={handleCloseModal}
     >
+      <div className="bg-white">
+        <div>
+          <SignUpForm />
+        </div>
+      </div>
     </div>
   )
 }

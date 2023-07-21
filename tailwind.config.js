@@ -14,6 +14,9 @@ module.exports = {
         'button-text': 'rgb(var(--color-button-text) / <alpha-value>)',
         background: 'rgb(var(--color-background) / <alpha-value>)',
       },
+      maxWidth: {
+        '1/2': '50%',
+      },
     },
   },
   plugins: [],
