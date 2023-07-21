@@ -8,8 +8,8 @@ const createAuthSlice: StateCreator<
   AuthSlice
 > = (set) => ({
   user: null,
-  logUserIn: (newUser) => set(() => ({ user: newUser })),
-  logUserOut: () => set(() => ({ user: null })),
+  setUser: (user) => set(() => ({ user })),
+  clearUser: () => set(() => ({ user: null })),
 })
 
 export default createAuthSlice

@@ -3,7 +3,7 @@
 import { MouseEvent, useCallback } from "react";
 import classNames from "classnames";
 import useBoundStore from "@/zustand";
-import SignUpForm from "../SignUpForm";
+import AuthForm from "../AuthForm";
 
 export default function SplashModalBase() {
   const { modal, closeModal } = useBoundStore((state) => state)
@@ -29,7 +29,11 @@ export default function SplashModalBase() {
     >
       <div className="bg-white">
         <div>
-          <SignUpForm />
+        {modal === 'login' ? (
+          <AuthForm type="login" />
+        ) : (
+          <AuthForm type="signup" />
+        )}
         </div>
       </div>
     </div>

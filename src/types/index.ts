@@ -4,8 +4,8 @@ export type ModalType = 'signup' | 'login' | null
 
 export interface AuthSlice {
   user: User | null,
-  logUserIn: (newUser: User) => void,
-  logUserOut: () => void,
+  setUser: (user: User) => void,
+  clearUser: () => void,
 }
 
 export interface UiSlice {
