@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { Metadata } from "next"
 
 async function getBook(id: string) {
   const baseUrl = process.env.NEXT_PUBLIC_GOOGLE_BOOKS_BASE_URL
@@ -9,6 +10,21 @@ async function getBook(id: string) {
   const res = await fetch(baseUrl + 'volumes/' + id + '?key=' + apiKey + '&fields=' + fields)
   const data = await res.json()
   return data
+}
+
+export async function generateMetadata({
+  params: { bookId },
+} : {
+  params: { bookId: string }
+}): Promise<Metadata> {
+  const bookData = await getBook(bookId)
+  const title = bookData.volumeInfo.title
+  
+
+  return {
+    title: `SamePage | ${title}`,
+    description: `Find your reading fellows and start on ${title} together, today!`
+  }
 }
 
 export default async function BookDetail({
