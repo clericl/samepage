@@ -15,11 +15,9 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-  children,
   home,
   splash,
 }: {
-  children: ReactNode
   home: ReactNode
   splash: ReactNode
 }) {
@@ -28,7 +26,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {children}
         {user ? home : splash}
       </body>
     </html>

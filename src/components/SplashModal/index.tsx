@@ -29,11 +29,12 @@ export default function SplashModalBase() {
     >
       <div className="bg-white">
         <div>
-        {modal === 'login' ? (
-          <AuthForm type="login" />
-        ) : (
-          <AuthForm type="signup" />
-        )}
+          {modal === 'login' && (
+            <AuthForm type="login" />
+          )}
+          {modal === 'signup' && (
+            <AuthForm type="signup" />
+          )}
         </div>
       </div>
     </div>
