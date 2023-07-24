@@ -1,6 +1,12 @@
 import SplashButtons from "@/components/SplashButtons";
 import SplashModal from "@/components/SplashModal";
 import Image from "next/image";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'SamePage',
+  description: 'Find your reading fellows and start on a book together, today!',
+}
 
 export default function Splash() {
   return (

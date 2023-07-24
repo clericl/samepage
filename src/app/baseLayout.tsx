@@ -2,7 +2,7 @@
 
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { ReactNode } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import useBoundStore from '@/zustand'
 
 import './globals.css'
@@ -21,12 +21,20 @@ export default function RootLayout({
   home: ReactNode
   splash: ReactNode
 }) {
+  const [isClient, setIsClient] = useState(false)
+
   const user = useBoundStore((state) => state.user)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        {user ? home : splash}
+        {isClient && (
+          user ? home : splash
+        )}
       </body>
     </html>
   )
