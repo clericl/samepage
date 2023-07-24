@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 async function getBook(id: string) {
   const baseUrl = process.env.NEXT_PUBLIC_GOOGLE_BOOKS_BASE_URL
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_BOOKS_API_KEY
@@ -15,6 +17,8 @@ export default async function BookDetail({
   params: { bookId: string }
 }) {
   const bookData = await getBook(bookId)
+  const displayImageUrl = bookData.volumeInfo.imageLinks.medium
+  const displayImageAlt = bookData.volumeInfo.title
 
   return (
     <div>
@@ -24,6 +28,9 @@ export default async function BookDetail({
       <p>
         {JSON.stringify(bookData, null, 2)}
       </p>
+      <div className="relative w-[500px] h-[500px]">
+        <Image src={displayImageUrl} alt={displayImageAlt} width={500} height={500} />
+      </div>
     </div>
   )
 }
