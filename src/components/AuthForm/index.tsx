@@ -1,6 +1,6 @@
 'use client'
 
-import { ModalType } from "@/types"
+import { ModalType } from "@/utils/types"
 import { ChangeEvent, FormEvent, useCallback, useState } from "react"
 import { logUserIn, signUserUp } from "@/firebase/auth"
 import useBoundStore from "@/zustand"

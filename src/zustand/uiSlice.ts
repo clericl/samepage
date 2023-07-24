@@ -1,5 +1,5 @@
 import { StateCreator } from 'zustand'
-import { ModalType, AuthSlice, UiSlice } from '@/types'
+import { ModalType, AuthSlice, UiSlice } from '@/utils/types'
 
 const createUiSlice: StateCreator<
   AuthSlice & UiSlice,

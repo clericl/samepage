@@ -1,5 +1,5 @@
 import { StateCreator } from 'zustand'
-import { AuthSlice, UiSlice } from '@/types'
+import { AuthSlice, UiSlice } from '@/utils/types'
 
 const createAuthSlice: StateCreator<
   AuthSlice & UiSlice,

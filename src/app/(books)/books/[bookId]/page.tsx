@@ -1,13 +1,20 @@
 import Image from "next/image"
 import { Metadata } from "next"
+import { REVALIDATE_TIMEOUT } from "@/utils/constants"
 
-async function getBook(id: string) {
+export function constructUrl(id: string) {
   const baseUrl = process.env.NEXT_PUBLIC_GOOGLE_BOOKS_BASE_URL
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_BOOKS_API_KEY
 
   const fields = 'id,selfLink,volumeInfo(title,subtitle,authors,publishedDate,description,pageCount,categories,averageRating,ratingsCount,imageLinks)'
 
-  const res = await fetch(baseUrl + 'volumes/' + id + '?key=' + apiKey + '&fields=' + fields)
+  const constructedUrl = baseUrl + 'volumes/' + id + '?key=' + apiKey + '&fields=' + fields
+  return constructedUrl
+}
+
+async function getBook(id: string) {
+  const fetchUrl = constructUrl(id)
+  const res = await fetch(fetchUrl, { next: { revalidate: REVALIDATE_TIMEOUT }})
   const data = await res.json()
   return data
 }

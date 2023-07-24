@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from 'zustand/middleware'
-import { AuthSlice, UiSlice } from "@/types";
+import { AuthSlice, UiSlice } from "@/utils/types";
 import createAuthSlice from "./authSlice";
 import createUiSlice from "./uiSlice";
 
