@@ -1,14 +1,8 @@
 import SplashButtons from "@/components/SplashButtons";
 import SplashModal from "@/components/SplashModal";
 import Image from "next/image";
-import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: 'SamePage',
-  description: 'Find your reading fellows and start on a book together, today!',
-}
-
-export default function Splash() {
+export default function SplashPage() {
   return (
     <main className="relative w-screen h-screen">
       <section className="w-full bg-primary text-button-text h-3/5 flex justify-center items-center">
